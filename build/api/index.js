@@ -40,6 +40,7 @@ const forwardingrule_1 = __importDefault(require("./forwardingrule"));
 const group_1 = __importDefault(require("./group"));
 const invoice_1 = __importDefault(require("./invoice"));
 const ivr_1 = __importDefault(require("./ivr"));
+const linkeduser_1 = __importDefault(require("./linkeduser"));
 const mailbox_1 = __importDefault(require("./mailbox"));
 const music_1 = __importDefault(require("./music"));
 const outgoingcallerid_1 = __importDefault(require("./outgoingcallerid"));
@@ -151,8 +152,8 @@ class Nimvelo {
             },
         }, options);
         this.customers = new customerList_1.default(this);
-        this.stream = new Stream(this);
-        this.presenceWatcher = new PresenceWatcher(this);
+        this.stream = new stream_1.default(this);
+        this.presenceWatcher = new presenceWatcher_1.default(this);
         return this.authPromise;
     }
     // eslint-disable-next-line class-methods-use-this
@@ -289,6 +290,9 @@ class Nimvelo {
                 break;
             case 'ivr':
                 object = new ivr_1.default(this, item, parent);
+                break;
+            case 'linkeduser':
+                object = new linkeduser_1.default(this, item, parent);
                 break;
             case 'mailbox':
                 object = new mailbox_1.default(this, item, parent);
