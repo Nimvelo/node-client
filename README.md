@@ -1,7 +1,14 @@
+# ⚠️ ⚠️ ⚠️ Deprecated Package ⚠️ ⚠️ ⚠️
+
+This package has been renamed, and so this version has been deprecated.
+
+Development is continuing under the name [@sipcentric/pbx-client](https://www.npmjs.com/package/@sipcentric/pbx-client), please use that instead.
+
+---
+
 # Nimvelo Node.js Client
 
 Node.js client for the [Nimvelo/Sipcentric API](https://developer.nimvelo.com/).
-
 
 ## Usage
 
@@ -10,7 +17,7 @@ npm install @nimvelo/phone-api-client
 ```
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 // ...
 ```
@@ -39,12 +46,12 @@ There are further examples in the `examples/` directory. To try them, just clone
 #### Get all customers a user has access to
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 (async () => {
   const nimvelo = new Nimvelo({
-    username: 'myusername',
-    password: 'mypassword'
+    username: "myusername",
+    password: "mypassword"
   });
 
   const customers = await nimvelo.customers.get();
@@ -55,12 +62,12 @@ const Nimvelo = require('@nimvelo/phone-api-client');
 #### Get a specific customer
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 (async () => {
   const nimvelo = new Nimvelo({
-    username: 'myusername',
-    password: 'mypassword'
+    username: "myusername",
+    password: "mypassword"
   });
 
   const customerId = 1234;
@@ -73,12 +80,12 @@ const Nimvelo = require('@nimvelo/phone-api-client');
 #### Get a customer's phone book
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 (async () => {
   const nimvelo = new Nimvelo({
-    username: 'myusername',
-    password: 'mypassword'
+    username: "myusername",
+    password: "mypassword"
   });
 
   const customerId = 1234;
@@ -93,26 +100,24 @@ const Nimvelo = require('@nimvelo/phone-api-client');
 #### Create phone book entry
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 (async () => {
   const nimvelo = new Nimvelo({
-    username: 'myusername',
-    password: 'mypassword'
+    username: "myusername",
+    password: "mypassword"
   });
 
   const customerId = 1234;
 
   const customer = await nimvelo.customers.get(customerId);
   const phonebookentry = {
-    name: 'Nimvelo',
-    phoneNumber: '03301200030',
-    email: 'hello@nimvelo.com'
+    name: "Nimvelo",
+    phoneNumber: "03301200030",
+    email: "hello@nimvelo.com"
   };
 
-  const createdEntry = await customer.phonebook
-    .create(phonebookentry)
-    .save();
+  const createdEntry = await customer.phonebook.create(phonebookentry).save();
 
   console.log(createdEntry);
 })();
@@ -121,12 +126,12 @@ const Nimvelo = require('@nimvelo/phone-api-client');
 #### Update phone book entry
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 (async () => {
   const nimvelo = new Nimvelo({
-    username: 'myusername',
-    password: 'mypassword'
+    username: "myusername",
+    password: "mypassword"
   });
 
   const customerId = 1234;
@@ -135,7 +140,7 @@ const Nimvelo = require('@nimvelo/phone-api-client');
   const customer = await nimvelo.customers.get(customerId);
   const phonebookentry = await customer.phonebook.get(phonebookentryId);
 
-  phonebookentry.name = 'Updated name';
+  phonebookentry.name = "Updated name";
 
   const savedEntry = await phonebookentry.save();
 
@@ -143,16 +148,15 @@ const Nimvelo = require('@nimvelo/phone-api-client');
 })();
 ```
 
-
 #### Delete phone book entry
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 (async () => {
   const nimvelo = new Nimvelo({
-    username: 'myusername',
-    password: 'mypassword'
+    username: "myusername",
+    password: "mypassword"
   });
 
   const customerId = 1234;
@@ -165,34 +169,29 @@ const Nimvelo = require('@nimvelo/phone-api-client');
 })();
 ```
 
-
 #### Subscribe to incoming call events
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 const nimvelo = new Nimvelo({
-  username: 'myusername',
-  password: 'mypassword'
+  username: "myusername",
+  password: "mypassword"
 });
 
-nimvelo.stream.subscribe('incomingcall', function(call) {
-
+nimvelo.stream.subscribe("incomingcall", function(call) {
   console.log(call);
-
 });
-
 ```
-
 
 #### Monitor presence of an extension
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 const nimvelo = new Nimvelo({
-  username: 'myusername',
-  password: 'mypassword',
+  username: "myusername",
+  password: "mypassword"
 });
 
 const myCustomerId = 1; // Change this to your customer ID
@@ -200,23 +199,22 @@ const myCustomerId = 1; // Change this to your customer ID
 // Returns an array of subscriptions
 const subscriptions = await nimvelo.presenceWatcher.subscribe({
   customerId: myCustomerId,
-  targets: ['012345'], // The extensions you'd like to monitor
+  targets: ["012345"], // The extensions you'd like to monitor
   onStateChange: (extension, newState) => {
     console.log(extension); // 012345
     console.log(newState); // AVAILABLE, BUSY, or RINGING
-  },
+  }
 });
 ```
-
 
 #### Monitor presence of all extensions on an account
 
 ```js
-const Nimvelo = require('@nimvelo/phone-api-client');
+const Nimvelo = require("@nimvelo/phone-api-client");
 
 const nimvelo = new Nimvelo({
-  username: 'myusername',
-  password: 'mypassword',
+  username: "myusername",
+  password: "mypassword"
 });
 
 const subscribeToAll = async () => {
@@ -236,14 +234,13 @@ const subscribeToAll = async () => {
     onStateChange: (extension, newState) => {
       console.log(extension);
       console.log(newState);
-    },
+    }
   });
 };
 
 try {
   subscribeToAll();
 } catch (err) {
-  console.error('Error: ', err);
+  console.error("Error: ", err);
 }
 ```
-
